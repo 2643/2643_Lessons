@@ -9,12 +9,14 @@ import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.controls.MotionMagicVoltage;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class PositionMotor extends SubsystemBase {
   TalonFX positionMotor = new TalonFX(0);
   TalonFXConfiguration configs = new TalonFXConfiguration();
-  public double Target;
+  public double Target = 0;
+  
   /** Creates a new PositionMotor. */
   public PositionMotor() {
     var motionMagicConfigs = configs.MotionMagic;
@@ -45,5 +47,11 @@ public class PositionMotor extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    Target = SmartDashboard.getNumber("Target", Target);
+    SmartDashboard.putNumber("Target", Target);
+
+    SmartDashboard.putNumber("Position", getPos());
+
+    move(Target);
   }
 }
