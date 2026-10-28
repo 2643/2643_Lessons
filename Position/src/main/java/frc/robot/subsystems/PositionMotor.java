@@ -39,7 +39,7 @@ public class PositionMotor extends SubsystemBase {
 
   public void setPos(double target){
     Target = target;
-    positionMotor.setPosition(target)
+    positionMotor.setPosition(target);
   }
 
   @Override
