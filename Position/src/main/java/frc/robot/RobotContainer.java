@@ -7,8 +7,8 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.movePos1;
-import frc.robot.commands.movePos2;
+import frc.robot.commands.MovePos1;
+import frc.robot.commands.MovePos2;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.PositionMotor;
 import edu.wpi.first.wpilibj.Joystick;
@@ -57,8 +57,8 @@ public class RobotContainer {
     new Trigger(m_exampleSubsystem::exampleCondition)
         .onTrue(new ExampleCommand(m_exampleSubsystem));
 
-    aButton.onTrue(new movePos1());
-    bButton.onTrue(new movePos2());
+    aButton.onTrue(new MovePos1());
+    bButton.onTrue(new MovePos2());
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.

@@ -15,9 +15,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class PositionMotor extends SubsystemBase {
   TalonFX positionMotor = new TalonFX(0);
   TalonFXConfiguration configs = new TalonFXConfiguration();
-  public double Target = 0;
+  public double targetPosition;
   
-  /** Creates a new PositionMotor. */
   public PositionMotor() {
     var motionMagicConfigs = configs.MotionMagic;
     configs.Slot0.kP = 0.1;
@@ -31,7 +30,7 @@ public class PositionMotor extends SubsystemBase {
   }
 
   public void move(double target){
-    Target = target;
+    targetPosition = target;
     positionMotor.setControl(new MotionMagicVoltage(target));
   }
 
@@ -40,18 +39,14 @@ public class PositionMotor extends SubsystemBase {
   }
 
   public void setPos(double target){
-    Target = target;
     positionMotor.setPosition(target);
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    Target = SmartDashboard.getNumber("Target", Target);
-    SmartDashboard.putNumber("Target", Target);
-
-    SmartDashboard.putNumber("Position", getPos());
-
-    move(Target);
+    targetPosition = SmartDashboard.getNumber("Target", targetPosition);
+    SmartDashboard.putNumber("Target Position", targetPosition);
+    SmartDashboard.putNumber("Current Position", getPos());
   }
 }

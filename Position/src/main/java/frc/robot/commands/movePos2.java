@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class movePos2 extends Command {
+public class MovePos2 extends Command {
   /** Creates a new movePos2. */
-  public movePos2() {
+  public MovePos2() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
